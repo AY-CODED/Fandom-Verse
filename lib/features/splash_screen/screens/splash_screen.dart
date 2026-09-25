@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'package:fandom_verse/features/auth/screens/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -339,7 +340,7 @@ class _SplashScreenState extends State<SplashScreen>
                               Text(
                                 _statusText,
                                 style: const TextStyle(
-                                  fontSize: 12,
+                                  fontSize: 12, 
                                   color: Color(0xFFE1E2EB),
                                 ),
                               ),
@@ -375,38 +376,45 @@ class _SplashScreenState extends State<SplashScreen>
                               : [],
                         ),
                         child: Material(
-                          color: Colors.transparent,
-                          child: InkWell(
-                            borderRadius: BorderRadius.circular(12),
-                            onTap: _isReady ? () {} : null,
-                            child: Center(
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    _isReady ? 'ENTER OMNIVERSE' : 'INITIALIZING HUB',
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.bold,
-                                      letterSpacing: 2,
-                                      color: _isReady
-                                          ? const Color(0xFF00201A)
-                                          : const Color(0xFFE1E2EB),
-                                    ),
-                                  ),
-                                  const SizedBox(width: 8),
-                                  Icon(
-                                    Icons.arrow_forward,
-                                    size: 16,
+                        color: Colors.transparent,
+                        child: InkWell(
+                          borderRadius: BorderRadius.circular(12),
+                          onTap: _isReady
+                              ? () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => const RegisterScreen()),
+                                  );
+                                }
+                              : null,
+                          child: Center(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  _isReady ? 'ENTER OMNIVERSE' : 'INITIALIZING HUB',
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.bold,
+                                    letterSpacing: 2,
                                     color: _isReady
                                         ? const Color(0xFF00201A)
-                                        : const Color(0xFF00F5D4),
+                                        : const Color(0xFFE1E2EB),
                                   ),
-                                ],
-                              ),
+                                ),
+                                const SizedBox(width: 8),
+                                Icon(
+                                  Icons.arrow_forward,
+                                  size: 16,
+                                  color: _isReady
+                                      ? const Color(0xFF00201A)
+                                      : const Color(0xFF00F5D4),
+                                ),
+                              ],
                             ),
                           ),
                         ),
+                      ),
                       ),
                     ],
                   ),
